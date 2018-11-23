@@ -7,6 +7,15 @@ package com.wole.wozhilian.utils;
 public interface Constant {
 
     String BUNDLE_PARMS = "bundle_parms";
+
     String KEY = "key";
+
+    String TOKEN = "token";
+
+    String URL = "http://47.92.166.58:9012/Api/";
+
+    String USER = "user";
+
+    String PASSWORD = "password";
 
 }

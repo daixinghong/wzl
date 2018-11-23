@@ -12,15 +12,28 @@ import android.view.ViewGroup;
 
 import com.wole.wozhilian.R;
 import com.wole.wozhilian.home.adapter.RcyDevicesListAdapter;
+import com.wole.wozhilian.home.model.bean.UserDeviceBean;
+import com.wole.wozhilian.home.presenter.DeviceInterface;
+import com.wole.wozhilian.home.presenter.DevicePersenter;
+import com.wole.wozhilian.utils.Constant;
+import com.wole.wozhilian.utils.SpUtils;
+import com.wole.wozhilian.utils.ToastUtils;
+import com.wole.wozhilian.utils.UiUtils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2018/9/14.
  */
 
-public class DevicesListFragment extends Fragment {
+public class DevicesListFragment extends Fragment implements DeviceInterface {
 
     private RecyclerView mRcyDevicesList;
     private RcyDevicesListAdapter mAdapter;
+    private List<UserDeviceBean.DataBean> mList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -55,8 +68,13 @@ public class DevicesListFragment extends Fragment {
     }
 
     private void initData() {
-        mAdapter = new RcyDevicesListAdapter(getActivity(), null);
+        mAdapter = new RcyDevicesListAdapter(getActivity(), mList);
         mRcyDevicesList.setAdapter(mAdapter);
+
+        DevicePersenter persenter = new DevicePersenter(this);
+        persenter.getUserDevices();
+
+
     }
 
     private void initView(View inflate) {
@@ -73,4 +91,41 @@ public class DevicesListFragment extends Fragment {
     }
 
 
+    @Override
+    public void getDataError(Throwable throwable) {
+        ToastUtils.showTextToast(UiUtils.getString(R.string.network_error));
+    }
+
+    @Override
+    public String getToken() {
+        return (String) SpUtils.getParam(getActivity(), Constant.TOKEN,"");
+    }
+
+    @Override
+    public Map<String, Object> getMap() {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("m", "Query");
+        map.put("u",(String)SpUtils.getParam(getActivity(),Constant.USER,""));
+        map.put("p", (String)SpUtils.getParam(getActivity(),Constant.PASSWORD,""));
+
+        return map;
+    }
+
+    @Override
+    public void getDeviceListSuccess(UserDeviceBean userDeviceBean) {
+
+        switch (userDeviceBean.getCode()){
+            case 200:
+
+                List<UserDeviceBean.DataBean> data = userDeviceBean.getData();
+                mList.clear();
+                mList.addAll(data);
+                mAdapter.notifyDataSetChanged();
+
+                break;
+
+        }
+
+    }
 }

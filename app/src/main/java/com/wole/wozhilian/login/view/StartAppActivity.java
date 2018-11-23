@@ -10,7 +10,6 @@ import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 
 import com.wole.wozhilian.R;
-import com.wole.wozhilian.login.LoginActivity;
 import com.wole.wozhilian.login.model.PermissionBean;
 import com.wole.wozhilian.utils.IntentUtils;
 

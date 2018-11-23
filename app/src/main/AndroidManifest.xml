@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wole.wozhilian">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".application.BaseApplication"
         android:allowBackup="true"
@@ -18,12 +20,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".login.view.LoginActivity" />
         <activity android:name=".login.view.ForgetPasswordActivity" />
         <activity android:name=".login.view.RegisterUserActivity" />
         <activity android:name=".login.view.ModifyPasswordActivity" />
         <activity android:name=".home.view.activity.HomeActivity" />
-        <activity android:name=".home.view.activity.DevicesStatusActivity"></activity>
+        <activity android:name=".home.view.activity.DevicesStatusActivity" />
+        <activity android:name=".base.BaseActivity"></activity>
     </application>
 
 </manifest>

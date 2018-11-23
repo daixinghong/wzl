@@ -36,4 +36,8 @@
     <string name="home">首页</string>
     <string name="my_devices">我的设备</string>
     <string name="hint">预警</string>
+    <string name="not_input_user">还未输入用户名</string>
+    <string name="not_input_password">还未输入用户密码</string>
+    <string name="login_success">登录成功</string>
+    <string name="network_error">网络出错</string>
 </resources>
