@@ -1,33 +1,27 @@
 package com.wole.wozhilian;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.wole.wozhilian.base.BaseActivity;
+
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        initView();
-
-        initData();
-
-        initEvent();
-
+        init();
 
     }
 
-    private void initView() {
+    @Override
+    public int getContentView() {
+        return R.layout.activity_main;
+    }
+
+    private void init() {
 
     }
 
-    private void initData() {
 
-    }
-
-    private void initEvent() {
-
-    }
 }

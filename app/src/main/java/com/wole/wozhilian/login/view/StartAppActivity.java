@@ -4,12 +4,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 
 import com.wole.wozhilian.R;
+import com.wole.wozhilian.base.BaseActivity;
 import com.wole.wozhilian.login.model.PermissionBean;
 import com.wole.wozhilian.utils.IntentUtils;
 
@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StartAppActivity extends AppCompatActivity {
+public class StartAppActivity extends BaseActivity {
 
     private RelativeLayout mTvView;
     private final int REQUEST_CODE = 12138;
@@ -26,9 +26,13 @@ public class StartAppActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start_app);
 
         initView();
+    }
+
+    @Override
+    public int getContentView() {
+        return R.layout.activity_start_app;
     }
 
     private void initView() {

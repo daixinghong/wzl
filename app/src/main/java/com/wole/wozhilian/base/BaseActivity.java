@@ -9,6 +9,8 @@ import com.wole.wozhilian.utils.SpUtils;
 import com.wole.wozhilian.utils.ToastUtils;
 import com.wole.wozhilian.utils.UiUtils;
 
+import butterknife.ButterKnife;
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
@@ -16,6 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getContentView());
 
+        ButterKnife.bind(this);
     }
 
     public abstract int  getContentView();
